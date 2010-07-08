@@ -1,0 +1,47 @@
+<!dOcTyPe HtMl>
+<html>
+	<head>
+		<script src="rosewood.js"></script>
+	</head>
+	<body>
+		<script>
+			var rePos=function(resp) {
+				r = eval('('+resp+')');
+				rw.rules['dir'].dir = r.dir;
+			};
+			rw.init(500,500)
+			.newRule('dir',{
+				base: new rw.rule(true,1),
+				dir: 'u',
+				counter: 100,
+				rule: function() {
+					if (this.counter) {
+						this.counter--;
+					} else {
+						this.counter=100;
+						rw.ajax('/ajax/randpos', 'rePos');
+					};
+				}
+			});
+			rw.newEnt({
+				base:new rw.ent('ball','ball','ball','png',40,40),
+				update:function() {
+					if (rw.rules['dir'].dir=='u') { 
+						this.base.move(0,-1);
+					} else if (rw.rules['dir'].dir=='d') {
+						this.base.move(0,1);
+					} else if (rw.rules['dir'].dir=='l') {
+						this.base.move(-1,0);
+					} else {
+						this.base.move(1,0);
+					}
+					if (this.base.posX1()>500) this.base.move(-500,0);
+					if (this.base.posX2()<0) this.base.move(500,0);
+					if (this.base.posY1()>500) this.base.move(0,-500);
+					if (this.base.posY2()<0) this.base.move(0,500);
+				}
+			}).base.display('ball',230,230).end()
+			.start();
+		</script>
+	</body>
+</html>
