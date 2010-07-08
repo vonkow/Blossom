@@ -1,0 +1,16 @@
+Blossom: A rosewood.js gameserver using node
+
+Requirements:
+	node.js
+	A copy of rosewood.js located at ../Rosewood/ (relative to blossom).
+
+Usage:
+	Run 'node server.js' from the command line to start the server.
+	Open 'http://127.0.0.1:8000' in a browser to see a demo.
+
+	Modify app.js to change and add server-side game settings and functions.
+	Modify play.html to change client-side game settings.
+
+Notes:
+	Incredibly rough draft idea at the moment. May be prone to breaking.
+	You'll probably have to pull the latest versions of rosewood and node occasionally to keep blossom working.
