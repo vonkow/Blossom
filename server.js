@@ -7,6 +7,16 @@ var simpleCat=function(filePath){
 	return fs.readFileSync(filePath);
 };
 
+var running=true;
+var t;
+var counter=0;
+
+var clockTimer=function() {
+	console.log('tick '+counter++);
+	if (running) t=setTimeout(clockTimer,1000);
+}
+
+t=setTimeout(clockTimer,1000);
 http.createServer(function(req, res){
 	var u = url.parse(req.url),
 		p = u.pathname.split('/');
