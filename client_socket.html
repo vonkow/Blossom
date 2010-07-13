@@ -1,0 +1,21 @@
+<!dOcTyPe hTmL>
+<html>
+	<head>
+	</head>
+	<body>
+		<script>
+			var ws = new WebSocket('ws://127.0.0.1:8080/');
+			ws.onopen = function(e) {
+				var t=setTimeout(function(){
+					ws.send('hola');
+				},5000);
+			};
+			ws.onmessage = function(e) {
+				alert(e.data);
+			};
+			ws.onclose = function(e) {
+				alert('closed');
+			};
+		</script>
+	</body>
+</html>
